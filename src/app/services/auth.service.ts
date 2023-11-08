@@ -12,7 +12,7 @@ export class AuthService {
   private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
   private apikey = 'AIzaSyBGoQFVI_jaARNO7Uiol8Q5KYl63DNLErg'
 
-  userToken: string | undefined;
+  userToken: string;
 
   //Crear nuevo usuario
   //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
@@ -83,6 +83,11 @@ export class AuthService {
       this.userToken = token !== null ? token : '';
 
       return this.userToken;
+    }
+
+
+    estaAutenticado(): Boolean {
+      return this.userToken.length >2;
     }
 
 }
